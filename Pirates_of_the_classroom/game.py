@@ -1,7 +1,7 @@
 import pygame
 import random
 import json
-from Pirates_of_the_classroom.object import Image, Sound, Box, Text
+from Pirates_of_the_classroom.objectPirates import Image, Sound, Box, Text
 
 
 class Game:
@@ -66,10 +66,22 @@ class Game:
         self.word_img = []
         ii = 0
         for x, y in self.topMaps:
-            self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
+            if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
+                mini_dic = {}
+                mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156)
+                mini_dic["forground"] = Image(self.game_window, x, y, self.data[f"{self.grade}"][f"{self.lesson}"][ii], (self.width *.11)-10, (self.height *.156)-10)
+                self.word_img.append(mini_dic)
+            else:
+                self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
             ii += 1
         for x, y in self.planks:
-            self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
+            if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
+                mini_dic = {}
+                mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13)
+                mini_dic["forground"] = Image(self.game_window, x, y, self.data[f"{self.grade}"][f"{self.lesson}"][ii], self.width *.146, self.height *.13)
+                self.word_img.append(mini_dic)
+            else:
+                self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
             ii += 1
         self.make_button()
         self.scoreboard = Box(self.game_window, self.width - (self.width *.13), 10, self.width *.117, self.height - (self.height *.104), self.box_color)
@@ -86,6 +98,10 @@ class Game:
                                    Text(self.game_window, score_x + 40, score_y + 40, f"{self.teamsScore[i]}", self.font_url, self.font_size, self.text_color)))
             score_y += 120
         self.make_random_list()
+
+    def is_image_path(self, string):
+        image_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.webp')
+        return string.lower().endswith(image_extensions)
 
     def make_button(self):
         start_x, start_y = self.width *.183, self.height *.17  # Starting position for the grid
@@ -111,7 +127,13 @@ class Game:
         self.main_background_img.draw_image()
         self.exit_button.draw_image()
         for img in self.word_img:
-            img.draw_image(with_text= True)
+            if isinstance(img, dict):
+                background_img = img["background"]
+                forground_img = img["forground"]
+                background_img.draw_image()
+                forground_img.draw_image()
+            else:
+                img.draw_image(with_text= True)
         for img in self.x_imgs:
             img.draw_image()
         self.scoreboard.draw_box()
@@ -370,8 +392,10 @@ class Game:
 
 
 
-def play_game(grade, lesson):
+def play_pirate_game(grade, lesson):
     pygame.init()
     game = Game(grade, lesson, 40)
     game.main_loop()
     pygame.quit()
+
+# This game I want to dedicate to God Who made it possible. Without His help I would not have gotten so far.

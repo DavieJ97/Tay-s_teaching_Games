@@ -5,7 +5,7 @@
             "banana",
             "cherry",
             "kiwi",
-            "Pear",
+            "pear",
             "avocado",
             "tomato",
             "potato",
@@ -18,29 +18,49 @@
             "cat",
             "fish",
             "lion",
-            "cheeta",
+            "cheetah",
             "horse",
             "cow",
             "bird",
             "bat",
             "squirral",
-            "Tiger"
+            "tiger"
         ]
     },
     "6": {
         "1.1": [
-            "Hello",
-            "How",
-            "are",
-            "you",
-            "I",
-            "am",
-            "Great",
-            "I'm",
+            "Kate",
+            "Eric",
+            "Hoa",
             "Momo",
+            "Juno",
+            "Bora",
+            "Hello",
             "Hi",
-            "Bye",
-            "Apple"
+            "How are you?",
+            "I'm fine.",
+            "Bye"
+        ],
+        "2.1": [
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_writing_button_img_1.png",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_review_button_img_2.png",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_speaking_button_img_2.png",
+            "d",
+            "e",
+            "f",
+            "g",
+            "h",
+            "i",
+            "j",
+            "k"
+        ]
+    },
+    "4": {
+        "1.1": [
+            "What",
+            "Are",
+            "you",
+            "Doing"
         ]
     }
 }

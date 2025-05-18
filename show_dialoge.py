@@ -1,29 +1,33 @@
-from PyQt6.QtWidgets import (
-    QApplication, QLabel, QPushButton, QVBoxLayout, QHBoxLayout, 
-    QComboBox, QDialog, QMessageBox, QWidget
-)
+from PyQt6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QMessageBox
 import json
+from objects import Button, Label, ComboBox
 
 
 class GameStartDialog(QDialog):
     """ Pop-up that asks the user to select a grade and lesson before starting the game. """
-    def __init__(self):
+    def __init__(self, game):
         super().__init__()
         print("Showing_dialog")
+        if game == "pirate":
+            self.json_path = "Pirates_of_the_classroom/assets/json/words.json"
+        elif game == "kittens":
+            self.json_path = "Exploding_kittens/assets/json/questions.json"
         self.setWindowTitle("Select Grade & Lesson")
-        self.setFixedSize(400, 200)
+        self.setFixedSize(400, 300)
+        # Set background color
+        self.setStyleSheet("background-color: #9ccdc2;")
 
         self.get_json()  # Load words data
 
         layout = QVBoxLayout()
 
         # Labels
-        grade_label = QLabel("Select Grade:")
-        lesson_label = QLabel("Select Lesson:")
+        grade_label = Label("Select Grade:", 16)
+        lesson_label = Label("Select Lesson:", 16)
 
         # Dropdowns
-        self.grade_dropdown = QComboBox()
-        self.lesson_dropdown = QComboBox()
+        self.grade_dropdown = ComboBox()
+        self.lesson_dropdown = ComboBox()
 
         # Populate grades dropdown
         self.grade_dropdown.addItems(self.data.keys())
@@ -34,8 +38,10 @@ class GameStartDialog(QDialog):
 
         # Buttons
         button_layout = QHBoxLayout()
-        start_button = QPushButton("Start Game")
-        cancel_button = QPushButton("Cancel")
+        start_button = Button(150, 50, text ="Start Game")
+        start_button.toggle_styleSheet("normal")
+        cancel_button = Button(150, 50, text ="Cancel")
+        cancel_button.toggle_styleSheet("normal")
 
         start_button.clicked.connect(self.accept_selection)
         cancel_button.clicked.connect(self.reject)
@@ -54,7 +60,7 @@ class GameStartDialog(QDialog):
 
     def get_json(self):
         """ Loads JSON data containing grades, lessons, and words """
-        json_file = "Pirates_of_the_classroom/assets/json/words.json"
+        json_file = self.json_path
         with open(json_file, "r", encoding="utf-8") as file:
             self.data = json.load(file)
 

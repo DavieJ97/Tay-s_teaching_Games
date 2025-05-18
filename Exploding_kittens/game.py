@@ -1,7 +1,7 @@
 import pygame
 import random
 import json
-from object import Image, Box, Text, Sound
+from Exploding_kittens.objectKittens import Image, Box, Text, Sound
 
 class Game:
     def __init__(self, grade, lesson):
@@ -174,8 +174,8 @@ class Game:
         self.make_question()
         self.question_background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/question_background.png", self.width, self.height)
         if self.is_image_path(self.question):
-            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False, text=f" ", fontUrl=self.font_url, text_size=int(self.width*.0366), text_color=self.grey)
-            
+            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False)
+            self.over_image = Image(self.game_window, self.width*.5, self.height*.5, self.question, (self.width-(self.width*.146))-100, (self.height-(self.height*.13))-100, True)
         else:
             self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False, text=f"{self.question}", fontUrl=self.font_url, text_size=int(self.width*.0366), text_color=self.grey)
         self.top_instructions = Image(self.game_window, self.width*.037, self.height*.052, "Exploding_kittens/assets/images/Top_instructions.png", self.width-(self.width*.073), self.height*.13, False, text=f"{self.instruction}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
@@ -187,7 +187,11 @@ class Game:
 
     def draw_question_objects(self):
         self.question_background.draw_image()
-        self.question_box.draw_image(with_text=True)
+        if self.is_image_path(self.question):
+            self.question_box.draw_image()
+            self.over_image.draw_image()
+        else:
+            self.question_box.draw_image(with_text=True)
         self.top_instructions.draw_image(with_text=True)
         self.incorrect_button.draw_image()
         if self.show_answer:
@@ -542,9 +546,10 @@ class Game:
             pygame.display.update()
             self.clock.tick(60)
 
-if __name__ == "__main__":
+def play_kitten_game(grade, lesson):
     pygame.init()
-    game = Game(6, 3.1)
+    game = Game(grade, lesson)
     game.main_loop()
     pygame.quit()
-    quit()
+
+# This Game I want to dedicate to God Who made it possible. Without His help I would not have gotten so far.
