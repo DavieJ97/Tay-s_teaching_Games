@@ -2,6 +2,9 @@ import pygame
 import random
 import json
 from Pirates_of_the_classroom.objectPirates import Image, Sound, Box, Text
+import traceback
+import sys
+import os
 
 
 class Game:
@@ -67,6 +70,7 @@ class Game:
         ii = 0
         for x, y in self.topMaps:
             if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
+                full_path = self.resource_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii])
                 mini_dic = {}
                 mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156)
                 mini_dic["forground"] = Image(self.game_window, x, y, self.data[f"{self.grade}"][f"{self.lesson}"][ii], (self.width *.11)-10, (self.height *.156)-10)
@@ -76,9 +80,10 @@ class Game:
             ii += 1
         for x, y in self.planks:
             if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
+                full_path = self.resource_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii])
                 mini_dic = {}
                 mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13)
-                mini_dic["forground"] = Image(self.game_window, x, y, self.data[f"{self.grade}"][f"{self.lesson}"][ii], self.width *.146, self.height *.13)
+                mini_dic["forground"] = Image(self.game_window, x, y, full_path, self.width *.146, self.height *.13)
                 self.word_img.append(mini_dic)
             else:
                 self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
@@ -367,6 +372,16 @@ class Game:
                             self.page = "main"
                             return   
 
+    def resource_path(self, relative_path):
+        """Get absolute path to resource, works for dev and for PyInstaller."""
+        try:
+            base_path = os.path.dirname(sys.executable) # PyInstaller builds
+        except AttributeError:
+            base_path = os.path.dirname(sys.argv[0])  # Folder containing the main script or executable
+            print("Root path:", os.path.dirname(sys.argv[0]))
+
+        return os.path.join(base_path, relative_path)
+
     # Main Loop function
     def main_loop(self):
         while self.isRunning:
@@ -394,6 +409,12 @@ class Game:
 
 def play_pirate_game(grade, lesson):
     pygame.init()
+    try:
+        pygame.mixer.init()
+    except Exception:
+        with open("error_log.txt", "a") as f:
+            f.write("Mixer init failed:\n")
+            f.write(traceback.format_exc())
     game = Game(grade, lesson, 40)
     game.main_loop()
     pygame.quit()

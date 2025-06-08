@@ -14,7 +14,6 @@
             "fish"
         ],
         "2.1": [
-            "dog",
             "cat",
             "fish",
             "lion",
@@ -24,7 +23,8 @@
             "bird",
             "bat",
             "squirral",
-            "tiger"
+            "tiger",
+            "lepord"
         ]
     },
     "6": {
@@ -42,10 +42,10 @@
             "Bye"
         ],
         "2.1": [
-            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_writing_button_img_1.png",
-            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_review_button_img_2.png",
-            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_speaking_button_img_2.png",
-            "d",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_writing_button_img_2.png",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_review_button_img_3.png",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG_speaking_button_img_3.png",
+            "images\\uploaded_image\\Pirates\\Grade6 Lesson2.1\\TTG _icon_2.png",
             "e",
             "f",
             "g",

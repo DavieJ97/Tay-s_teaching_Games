@@ -2,6 +2,9 @@ import pygame
 import random
 import json
 from Exploding_kittens.objectKittens import Image, Box, Text, Sound
+import traceback
+import sys
+import os
 
 class Game:
     def __init__(self, grade, lesson):
@@ -174,8 +177,9 @@ class Game:
         self.make_question()
         self.question_background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/question_background.png", self.width, self.height)
         if self.is_image_path(self.question):
+            path = self.resource_path(self.question)
             self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False)
-            self.over_image = Image(self.game_window, self.width*.5, self.height*.5, self.question, (self.width-(self.width*.146))-100, (self.height-(self.height*.13))-100, True)
+            self.over_image = Image(self.game_window, self.width*.5, self.height*.5, path, (self.width-(self.width*.146))-100, (self.height-(self.height*.13))-100, True)
         else:
             self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False, text=f"{self.question}", fontUrl=self.font_url, text_size=int(self.width*.0366), text_color=self.grey)
         self.top_instructions = Image(self.game_window, self.width*.037, self.height*.052, "Exploding_kittens/assets/images/Top_instructions.png", self.width-(self.width*.073), self.height*.13, False, text=f"{self.instruction}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
@@ -517,7 +521,17 @@ class Game:
                     elif P5_text_rect.collidepoint(event.pos):
                         self.click_sound.play_sound()
                         self.moving = True
-                
+
+    def resource_path(self, relative_path):
+        """Get absolute path to resource, works for dev and for PyInstaller."""
+        try:
+            base_path = os.path.dirname(sys.executable)  # PyInstaller builds
+        except AttributeError:
+            base_path = os.path.dirname(sys.argv[0])  # Folder containing the main script or executable
+            print("Root path:", os.path.dirname(sys.argv[0]))
+
+        return os.path.join(base_path, relative_path)
+
     def main_loop(self):
         while self.isRunning:
             if self.page == "intro":
@@ -548,6 +562,12 @@ class Game:
 
 def play_kitten_game(grade, lesson):
     pygame.init()
+    try:
+        pygame.mixer.init()
+    except Exception:
+        with open("error_log.txt", "a") as f:
+            f.write("Mixer init failed:\n")
+            f.write(traceback.format_exc())
     game = Game(grade, lesson)
     game.main_loop()
     pygame.quit()

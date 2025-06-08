@@ -22,7 +22,7 @@ class TeachingGamesApp(QWidget):
                 ]
         self.setWindowTitle("Tay's Teaching Games")
         self.setFixedSize(1375, 700)  # Set initial window size
-        self.setWindowIcon(QIcon("images\Intro_page_imgs\TTG _icon2.png"))
+        self.setWindowIcon(QIcon("images/Intro_page_imgs/TTG _icon2.png"))
 
 
          # Main layout (Inside Scroll Area)
@@ -31,7 +31,7 @@ class TeachingGamesApp(QWidget):
 
         # Load and Set Fixed Image
         self.image_label = QLabel(self)
-        self.pixmap = QPixmap("images\Intro_page_imgs\Tays_Teaching_Games_Intro2.png")
+        self.pixmap = QPixmap("images/Intro_page_imgs/Tays_Teaching_Games_Intro2.png")
 
         if not self.pixmap.isNull():
             self.pixmap = self.pixmap.scaled(1200, 300, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)  # Fixed size
@@ -46,12 +46,12 @@ class TeachingGamesApp(QWidget):
         self.buttons = []
         
         image_paths = [
-            "images\Intro_page_imgs\TTG_Pirates_of_the_classroom.png",
-            "images\Intro_page_imgs\TTG_Exploding_kittens.png",
-            "images\Intro_page_imgs\TTG_Pokemon_shuffle.png",
-            "images\Intro_page_imgs\TTG_spots_and_spiderwebs.png",
-            "images\Intro_page_imgs\TTG_Teachers_Page.png",
-            "images\Intro_page_imgs\TTG_About.png",
+            "images/Intro_page_imgs/TTG_Pirates_of_the_classroom.png",
+            "images/Intro_page_imgs/TTG_Exploding_kittens.png",
+            "images/Intro_page_imgs/TTG_Pokemon_shuffle.png",
+            "images/Intro_page_imgs/TTG_spots_and_spiderwebs.png",
+            "images/Intro_page_imgs/TTG_Teachers_Page.png",
+            "images/Intro_page_imgs/TTG_About.png",
         ]
 
         for i, img_path in enumerate(image_paths):

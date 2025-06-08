@@ -5,6 +5,8 @@ import json
 from objects import Button, ComboBox, Label, LineEdit, ToggleSwitch
 import os
 import shutil
+import traceback
+import sys
 
 BASEFOLDER = "images/uploaded_image/Pirates"
 
@@ -174,7 +176,8 @@ class SubPagePirate(QWidget):
                     self.com_checked = True
                     switch.setChecked(True)
                     self.com_checked = False
-                    pixmap = QPixmap(word)
+                    path = self.resource_path(word)
+                    pixmap = QPixmap(path)
                     pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
                     label.setPixmap(pixmap)
             else:
@@ -277,33 +280,48 @@ class SubPagePirate(QWidget):
         if not self.com_checked:
             grade = self.grade_dropdown.currentText().strip()
             lesson = self.lesson_dropdown.currentText().strip()
-            image_folder = os.path.join(os.path.dirname(__file__), BASEFOLDER, f"Grade{grade} Lesson{lesson}")
+            image_folder = self.resource_path(os.path.join(BASEFOLDER, f"Grade{grade} Lesson{lesson}"))
             os.makedirs(image_folder, exist_ok=True)
             input = self.mini_layouts[index]["input"]
             switch = self.mini_layouts[index]["switch"]
             label = self.mini_layouts[index]["label"]
             if switch.isChecked():
-                file_path, _ = QFileDialog.getOpenFileName(self, "Select Image", "", "Images (*.png *.jpg *.jpeg)")
-                if file_path:
-                    file_name = os.path.basename(file_path)
-                    destination_path = os.path.join(image_folder, file_name)
-                    base, ext = os.path.splitext(file_name)
-                    count = 1
-                    while os.path.exists(destination_path):
-                        file_name = f"{base}_{count}{ext}"
+                try:
+                    file_path, _ = QFileDialog.getOpenFileName(self, "Select Image", "", "Images (*.png *.jpg *.jpeg)")
+                    if file_path:
+                        file_name = os.path.basename(file_path)
                         destination_path = os.path.join(image_folder, file_name)
-                        count += 1
-                    shutil.copy(file_path, destination_path)
-                    self.image_path = os.path.relpath(destination_path)
-                    QMessageBox.information(self, "Image Added", f"Image saved as: {self.image_path}")
-                    input.setText(self.image_path)
-                    pixmap = QPixmap(self.image_path)
-                    if not pixmap.isNull():
-                        pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
-                        label.setPixmap(pixmap)
+                        base, ext = os.path.splitext(file_name)
+                        count = 1
+                        while os.path.exists(destination_path):
+                            file_name = f"{base}_{count}{ext}"
+                            destination_path = os.path.join(image_folder, file_name)
+                            count += 1
+                        shutil.copy(file_path, destination_path)
+                        self.image_path = os.path.relpath(destination_path, self.resource_path(""))
+                        QMessageBox.information(self, "Image Added", f"Image saved as: {destination_path}")
+                        input.setText(self.image_path)
+                        pixmap = QPixmap(destination_path)
+                        if not pixmap.isNull():
+                            pixmap.scaled(50, 50, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)
+                            label.setPixmap(pixmap)
+                except Exception:
+                    with open("error_log.txt", "a") as f:
+                        f.write("Saving image failed:\n")
+                        f.write(traceback.format_exc())
             else:
                 input.clear()
                 label.clear()
+    
+    def resource_path(self, relative_path):
+        """Get absolute path to resource, works for dev and for PyInstaller."""
+        try:
+            base_path = os.path.dirname(sys.executable)  # PyInstaller builds
+        except AttributeError:
+            base_path = os.path.dirname(sys.argv[0])  # Folder containing the main script or executable
+            print("Root path:", os.path.dirname(sys.argv[0]))
+
+        return os.path.join(base_path, relative_path)
 
 
 

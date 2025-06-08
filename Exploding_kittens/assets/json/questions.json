@@ -102,13 +102,13 @@
             },
             {
                 "Instructions": "Say the word",
-                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 1.1\\TTG_About.png",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 1.1\\TTG _icon2_1.png",
                 "Answer": "About"
             },
             {
-                "Instructions": "",
-                "Question": "",
-                "Answer": ""
+                "Instructions": "Say the word",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 1.1\\Tays_Teaching_Games_Intro.png",
+                "Answer": "Good job"
             },
             {
                 "Instructions": "",

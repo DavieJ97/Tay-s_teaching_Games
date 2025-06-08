@@ -3,8 +3,10 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 import json
 from objects import Button, ComboBox, Label, LineEdit, ToggleSwitch
+import sys
 import os
 import shutil
+import traceback
 
 BASEFOLDER = "images/uploaded_image/Kittens"
 
@@ -326,24 +328,50 @@ class SubPageKittens(QWidget):
         if not self.com_checked:
             grade = self.grade_box.currentText().strip()
             lesson = self.lesson_box.currentText().strip()
-            image_folder = os.path.join(os.path.dirname(__file__), BASEFOLDER, f"Grade {grade} Lesson {lesson}")
+
+            # Build full path to the folder where the image will go
+            image_folder = self.resource_path(os.path.join(BASEFOLDER, f"Grade {grade} Lesson {lesson}"))
             os.makedirs(image_folder, exist_ok=True)
+
             if self.image_switch.isChecked():
-                file_path, _ = QFileDialog.getOpenFileName(self, "Select Image", "", "Images (*.png *.jpg *.jpeg)")
-                if file_path:
-                    file_name = os.path.basename(file_path)
-                    destination_path = os.path.join(image_folder, file_name)
-                    base, ext = os.path.splitext(file_name)
-                    count = 1
-                    while os.path.exists(destination_path):
-                        file_name = f"{base}_{count}{ext}"
+                try:
+                    file_path, _ = QFileDialog.getOpenFileName(self, "Select Image", "", "Images (*.png *.jpg *.jpeg)")
+                    if file_path:
+                        file_name = os.path.basename(file_path)
                         destination_path = os.path.join(image_folder, file_name)
-                        count += 1
-                    shutil.copy(file_path, destination_path)
-                    self.image_path = os.path.relpath(destination_path)
-                    QMessageBox.information(self, "Image Added", f"Image saved as: {self.image_path}")
-                    self.text_or_img_input.setText(self.image_path)
-                    
+
+                        # Make sure the name is unique
+                        base, ext = os.path.splitext(file_name)
+                        count = 1
+                        while os.path.exists(destination_path):
+                            file_name = f"{base}_{count}{ext}"
+                            destination_path = os.path.join(image_folder, file_name)
+                            count += 1
+
+                        # Copy the image
+                        shutil.copy(file_path, destination_path)
+
+                        # Save relative path from the root of your program folder
+                        self.image_path = os.path.relpath(destination_path, self.resource_path(""))
+
+                        # Feedback to user
+                        QMessageBox.information(self, "Image Added", f"Image saved as:\n{self.image_path}")
+                        self.text_or_img_input.setText(self.image_path)
+
+                except Exception:
+                    with open("error_log.txt", "a") as f:
+                        f.write("init failed:\n")
+                        f.write(traceback.format_exc())
             else:
                 self.text_or_img_input.clear()
+
+    def resource_path(self, relative_path):
+        """Get absolute path to resource, works for dev and for PyInstaller."""
+        try:
+            base_path = os.path.dirname(sys.executable)  # PyInstaller builds
+        except AttributeError:
+            base_path = os.path.dirname(sys.argv[0])  # Folder containing the main script or executable
+            print("Root path:", os.path.dirname(sys.argv[0]))
+
+        return os.path.join(base_path, relative_path)
 
