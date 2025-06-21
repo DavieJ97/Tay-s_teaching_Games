@@ -38,7 +38,7 @@ class Game:
         pygame.mixer.music.load("Pirates_of_the_classroom/assets/audio/Pirates of The Caribbean- EPIC Music [ ezmp3.cc ].mp3")
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(-1)
-        with open("Pirates_of_the_classroom/assets/json/words.json", "r") as file:
+        with open("Pirates_of_the_classroom/assets/json/words.json", "r", encoding="utf-8") as file:
             self.data = json.load(file)
         self.create_intro_objects()
         
@@ -415,7 +415,12 @@ def play_pirate_game(grade, lesson):
         with open("error_log.txt", "a") as f:
             f.write("Mixer init failed:\n")
             f.write(traceback.format_exc())
-    game = Game(grade, lesson, 40)
+    try:
+        game = Game(grade, lesson, 40)
+    except Exception:
+        with open("error_log.txt", "a") as f:
+            f.write("loading game error:\n")
+            f.write(traceback.format_exc())
     game.main_loop()
     pygame.quit()
 

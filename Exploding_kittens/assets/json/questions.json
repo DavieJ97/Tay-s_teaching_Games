@@ -91,6 +91,143 @@
                 "Question": "srebtepem",
                 "Answer": "September"
             }
+        ],
+        "5.2": [
+            {
+                "Instructions": "What are you going to do ____ _________?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q1.jpg",
+                "Answer": "this Wednesday"
+            },
+            {
+                "Instructions": "What are you going to do ____ ________?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q2_1.png",
+                "Answer": "this Thursday"
+            },
+            {
+                "Instructions": "Translate to English!",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q3_2.png",
+                "Answer": "Later"
+            },
+            {
+                "Instructions": "Translate to English!",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q4_2.png",
+                "Answer": "next"
+            },
+            {
+                "Instructions": "Translate to English!",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q5_2.png",
+                "Answer": "This week"
+            },
+            {
+                "Instructions": "Translate to English!",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q6_2.png",
+                "Answer": "Tonight"
+            },
+            {
+                "Instructions": "Translate to English!",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q7_2.png",
+                "Answer": "What are you going to do after school?"
+            },
+            {
+                "Instructions": "What are they going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q8.jpg",
+                "Answer": "They are going to go shopping/do shopping."
+            },
+            {
+                "Instructions": "What is she going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q9.jpg",
+                "Answer": "She is going to have piano practice."
+            },
+            {
+                "Instructions": "What are they going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q10.jpg",
+                "Answer": "They are going to play games."
+            },
+            {
+                "Instructions": "What are they going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q11.jpg",
+                "Answer": "They are going to a music concert."
+            },
+            {
+                "Instructions": "What are they going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q12.png",
+                "Answer": "They are going to watch the baseball match."
+            },
+            {
+                "Instructions": "What are they going to do?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q13.jpg",
+                "Answer": "They are going to visit the museum."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q14.jpg",
+                "Answer": "I’m going to do my science project."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q15.png",
+                "Answer": "I’m going to the beach."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q16.jpg",
+                "Answer": "I’m going to stay home."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q17.jpg",
+                "Answer": "I’m going to visit the museum."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q18.jpg",
+                "Answer": "I’m going to the café."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q19.jpg",
+                "Answer": "I’m going to read a book."
+            },
+            {
+                "Instructions": "What are you going to do after school?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q20.jpg",
+                "Answer": "I’m going to see\na movie."
+            },
+            {
+                "Instructions": "What are you going to do after school?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q21.jpg",
+                "Answer": "I’m going to see a musical."
+            },
+            {
+                "Instructions": "What will you do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q22.jpg",
+                "Answer": "I'm going to have soccer practice."
+            },
+            {
+                "Instructions": "What are you goiong to do next Tuesday?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q23.png",
+                "Answer": "I'm going to have soccer practice."
+            },
+            {
+                "Instructions": "What are you going to do this Thursday.",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q24.png",
+                "Answer": "I’m going to do my \nscience project."
+            },
+            {
+                "Instructions": "What are you going to do this weekend?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q25.png",
+                "Answer": "I will do my science project and watch a movie."
+            },
+            {
+                "Instructions": "What are you going to do tomorrow?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q26.png",
+                "Answer": "I’m going to study English."
+            },
+            {
+                "Instructions": "What are you going to do ____ _______?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 6 Lesson 5.2\\Q27.png",
+                "Answer": "this weekend"
+            }
         ]
     },
     "5": {
@@ -102,7 +239,7 @@
             },
             {
                 "Instructions": "Say the word",
-                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 1.1\\TTG _icon2_1.png",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 1.1\\TTG _icon.png",
                 "Answer": "About"
             },
             {
@@ -229,6 +366,143 @@
                 "Instructions": "",
                 "Question": "",
                 "Answer": ""
+            }
+        ],
+        "5.2": [
+            {
+                "Instructions": "What is kimchi jeon?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q1.jpg",
+                "Answer": "It’s a kimchi pancake."
+            },
+            {
+                "Instructions": "M__ I ____ ____ _____?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q2.png",
+                "Answer": "May I take your order?"
+            },
+            {
+                "Instructions": "Q: May I take your order?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q3.png",
+                "Answer": "I’d like a hamburger, please."
+            },
+            {
+                "Instructions": "Q: May I take your order?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q4.png",
+                "Answer": "I’d like a fruit salad, please."
+            },
+            {
+                "Instructions": "Q: May I take your order?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q5.png",
+                "Answer": "I’d like some noodles, please."
+            },
+            {
+                "Instructions": "What is bun cha?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q6.jpg",
+                "Answer": "It’s a noodle salad from Vietnam."
+            },
+            {
+                "Instructions": "What does is taste like? (2 tastes)",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q7.jpg",
+                "Answer": "It’s sweet and sour."
+            },
+            {
+                "Instructions": "Q: May I take your order?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q8.png",
+                "Answer": "I’d like a sandwich, please."
+            },
+            {
+                "Instructions": "Spelling",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q9.png",
+                "Answer": "f-r-i-e-d  r-i-c-e"
+            },
+            {
+                "Instructions": "Spelling",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q10.jpg",
+                "Answer": "S-p-i-c-y"
+            },
+            {
+                "Instructions": "Q: May I take your order?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q11.png",
+                "Answer": "I’d like a vegetable pizza, please."
+            },
+            {
+                "Instructions": "What’s yakgwa?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q12.jpg",
+                "Answer": "It’s a Korean honey cookie."
+            },
+            {
+                "Instructions": "What’s tteok?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q13.jpg",
+                "Answer": "It’s a rice cake from Korea."
+            },
+            {
+                "Instructions": "Make a dialogue.",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q14.png",
+                "Answer": "Good Job."
+            },
+            {
+                "Instructions": "What’s buldak bogumyeon?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q15.png",
+                "Answer": "It’s Korean spicy noodles."
+            },
+            {
+                "Instructions": "Spelling",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q16.png",
+                "Answer": "P-a-n-c-a-k-e-s"
+            },
+            {
+                "Instructions": "Say it in English",
+                "Question": "주문하시겠어요?",
+                "Answer": "May I take your order?"
+            },
+            {
+                "Instructions": "Say it in English",
+                "Question": "과일샐러드 주세요.",
+                "Answer": "I’d like a fruit salad, please."
+            },
+            {
+                "Instructions": "What’s bulgogi?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q19.jpg",
+                "Answer": "It’s a Korean beef dish."
+            },
+            {
+                "Instructions": "Say it in English",
+                "Question": "그것은 달아!",
+                "Answer": "It’s sweet!"
+            },
+            {
+                "Instructions": "Say it in English",
+                "Question": "그것은 정말 맛있어!",
+                "Answer": "It’s very delicious!"
+            },
+            {
+                "Instructions": "Make a dialogue",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q22.png",
+                "Answer": "Good Job."
+            },
+            {
+                "Instructions": "Make a dialogue.",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q23.png",
+                "Answer": "Good Job."
+            },
+            {
+                "Instructions": "Make a dialogue.",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q24.png",
+                "Answer": "Good Job"
+            },
+            {
+                "Instructions": "What does it taste like?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q25.png",
+                "Answer": "It’s sweet and sour."
+            },
+            {
+                "Instructions": "What’s pepero?\nHow does it taste?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q26.png",
+                "Answer": "It’s a sweet and crunchy snack."
+            },
+            {
+                "Instructions": "What’s bibimbap?",
+                "Question": "images\\uploaded_image\\Kittens\\Grade 5 Lesson 5.2\\Q27.jpg",
+                "Answer": "It’s Korean rice with vegetables."
             }
         ]
     },

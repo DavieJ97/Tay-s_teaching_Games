@@ -37,7 +37,7 @@ class Game:
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(-1)
         self.clock = pygame.time.Clock()
-        with open("Exploding_kittens/assets/json/questions.json", "r") as file:
+        with open("Exploding_kittens/assets/json/questions.json", "r", encoding="utf-8") as file:
             data = json.load(file)
         self.data = data[self.grade][self.lesson]
         self.json_i = 0
@@ -371,6 +371,7 @@ class Game:
                     else:
                         self.page = "main"
                         self.demo = False
+                        self.turn = 0
                         self.make_score_for_team()
                         self.create_main_objects()
                     return 
@@ -568,7 +569,12 @@ def play_kitten_game(grade, lesson):
         with open("error_log.txt", "a") as f:
             f.write("Mixer init failed:\n")
             f.write(traceback.format_exc())
-    game = Game(grade, lesson)
+    try:
+        game = Game(grade, lesson)
+    except Exception:
+        with open("error_log.txt", "a") as f:
+            f.write("loading game error:\n")
+            f.write(traceback.format_exc())
     game.main_loop()
     pygame.quit()
 
