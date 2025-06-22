@@ -45,16 +45,25 @@ Whether you teach one class or several grades, this app saves time and keeps you
 ## 📷 Screenshots
 
 <p align="center">
+  Home page in game mode.<br>
   <img width="683" alt="Screenshot 2025-06-22 083140" src="https://github.com/user-attachments/assets/b05de6ab-d4fa-48db-b39e-8565fa134d01" />
+  <br><br>Home page in teacher's mode.<br>
   <img width="683" alt="Screenshot 2025-06-22 083220" src="https://github.com/user-attachments/assets/602bad06-6b24-4778-9249-1fe9ec10f951" />
+  <br><br>Pirates of the classroom game<br>
   <img width="683" alt="Screenshot 2025-06-22 083307" src="https://github.com/user-attachments/assets/b204de89-9d52-433e-b792-4ccc5b21cdec" />
   <img width="683" alt="Screenshot 2025-06-22 083336" src="https://github.com/user-attachments/assets/2dcd8d77-f566-4949-aa64-25e0c1b30cae" />
+  <br><br>Exploding kittens game<br>
   <img width="680" alt="Screenshot 2025-06-22 083408" src="https://github.com/user-attachments/assets/1820c137-9485-4315-ba00-f58ac15380df" />
   <img width="682" alt="Screenshot 2025-06-22 083503" src="https://github.com/user-attachments/assets/71b98531-1c78-46f4-8d5e-e1e8f5de0c33" />
 </p>
 
 ---
+## Download App Here 
+ 1. Download zip file on https://drive.google.com/drive/folders/16kRf1tUWL-RoYBMhRwjiEq2kNu5Pgdd9?usp=sharing
+ 2. Extract folders.
+ 3. Run the .EXE file in the dist folder
 
+---
 ## 🛠️ Technologies Used
 
 - Python 3
@@ -75,6 +84,6 @@ Whether you teach one class or several grades, this app saves time and keeps you
 ## 📬 Contact
 
 For questions or suggestions, feel free to open an issue or contact me directly.
-
+dawidwynanddelange@gmail.com
 ---
 
