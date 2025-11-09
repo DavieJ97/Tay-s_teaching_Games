@@ -15,7 +15,8 @@ class Image:
             self.audio = Sound(audio_url, volume)
         if text is not None:
             self.text = Text(self.game_window, self.x, self.y, text, fontUrl, text_size, text_color)
-            self.text.center_text(self.size_x, self.size_y)   
+            self.text.center_text(self.size_x, self.size_y)
+        self.rect = pygame.Rect(self.x, self.y, self.size_x, self.size_y)   
 
     def scale_img(self, size_x: int = None, size_y: int = None):
         if size_x is not None and size_y is not None:
@@ -23,26 +24,29 @@ class Image:
         else:
             self.img = pygame.transform.scale(self.img, (self.size_x, self.size_y))
     
-    def center_image(self):
-        img_rect = self.img.get_rect(center= (self.x, self.y))
+    def center_image(self, x, y):
+        img_rect = self.img.get_rect(center= (x, y))
         self.img_rect = img_rect
     
     def draw_image(self, with_audio: bool = False, with_text:bool = False, x: int = None, y: int = None):
+        if x is not None and y is not None:
+            self.x = x
+            self.y = y
+
         if self.centered:
-            self.center_image()
-            self.game_window.blit(self.img, self.img_rect) 
-        elif x is not None and y is not None:
-            self.game_window.blit(self.img, (x, y)) 
-        else:
+            self.center_image(self.x, self.y)
+            self.rect = self.img_rect
+            self.game_window.blit(self.img, self.img_rect)
+        else: 
             self.game_window.blit(self.img, (self.x, self.y))
+
         if with_audio:
             self.audio.play_sound()
         if with_text:
             self.text.draw_text()
 
     def get_rectangle(self):
-        rect = self.img.get_rect(topleft = (self.x, self.y))
-        return rect
+        return self.rect
 
 class Text:
     def __init__(self, game_window, position_x: int, position_y: int, text: str, font_url: str, text_size: int, text_color: tuple):
@@ -71,7 +75,10 @@ class Text:
         self.text_rect = text_rect  # Store adjusted rect for drawing
         self.text_centerd = True
 
-    def draw_text(self):
+    def draw_text(self, x: int = None, y: int = None):
+        if x is not None and y is not None:
+            self.x = x
+            self.y = y
         if self.text_centerd:
             self.game_window.blit(self.text, self.text_rect)
         else:
@@ -83,19 +90,31 @@ class Box:
         self.y = position_y
         self.game_window = game_window
         self.box_color = box_color
-        self.box = pygame.Rect(self.x, self.y, size_x, size_y)
+        self.size_x = size_x
+        self.size_y = size_y
+        self.centered = centered
+        self.box = pygame.Rect(self.x, self.y, self.size_x, self.size_y)
         if text != None and fontUrl != None and text_size != None and text_color != None:
+            self.text_color = text_color
             self.text_object = Text(self.game_window, self.x, self.y, text, fontUrl, text_size, text_color)
-            if centered:
-                self.text_object.center_text(size_x, size_y)
+            
     
-    def draw_box(self, with_text = False):
+    def draw_box(self, with_text = False, x: int = None, y: int = None):
+        if x is not None and y is not None:
+            self.x = x
+            self.y = y
+        self.box = pygame.Rect(self.x, self.y, self.size_x, self.size_y)
         pygame.draw.rect(self.game_window, self.box_color, self.box)
         if with_text == True:
-            self.text_object.draw_text()
+            if self.centered:
+                self.text_object.center_text(self.size_x, self.size_y)
+            self.text_object.draw_text(self.x, self.y)
     
     def check_collide(self, pos):
         return self.box.collidepoint(pos)
+    
+    def change_text(self, new_text):
+        self.text_object.innit_text(new_text, self.text_color)
 
 
 

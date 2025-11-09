@@ -12,6 +12,8 @@ class GameStartDialog(QDialog):
             self.json_path = "Pirates_of_the_classroom/assets/json/words.json"
         elif game == "kittens":
             self.json_path = "Exploding_kittens/assets/json/questions.json"
+        elif game == "plank":
+            self.json_path = "walk_the_plank/assets/json/questions.json"
         self.setWindowTitle("Select Grade & Lesson")
         self.setFixedSize(400, 300)
         # Set background color

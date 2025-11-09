@@ -6,6 +6,7 @@ from kittens_add_questions import SubPageKittens
 from show_dialoge import GameStartDialog
 from Pirates_of_the_classroom.game import play_pirate_game
 from Exploding_kittens.game import play_kitten_game
+from walk_the_plank.wanktheplank import play_plank_game
 from objects import Button, ToggleSwitch, ScrollArea, Label
 
 class TeachingGamesApp(QWidget):
@@ -15,7 +16,7 @@ class TeachingGamesApp(QWidget):
         self.function_list = [
                 self.pirate_button_clicked,  # Function reference
                 self.kitten_button_clicked,
-                lambda: print("Speaking Game"),
+                self.walk_plank_button_clicked,
                 lambda: print("Writing Game"),
                 lambda: print("Teacher's Page"),
                 lambda: print("About Page")
@@ -48,7 +49,7 @@ class TeachingGamesApp(QWidget):
         image_paths = [
             "images/Intro_page_imgs/TTG_Pirates_of_the_classroom.png",
             "images/Intro_page_imgs/TTG_Exploding_kittens.png",
-            "images/Intro_page_imgs/TTG_Pokemon_shuffle.png",
+            "images\Intro_page_imgs\TTG_Walk_the+plank.png",
             "images/Intro_page_imgs/TTG_spots_and_spiderwebs.png",
             "images/Intro_page_imgs/TTG_Teachers_Page.png",
             "images/Intro_page_imgs/TTG_About.png",
@@ -119,6 +120,12 @@ class TeachingGamesApp(QWidget):
         elif self.mode == "teacher":
             self.open_subpage("kittens")
 
+    def walk_plank_button_clicked(self):
+        if self.mode == "normal":
+            self.game("plank")
+        elif self.mode == "teacher":
+            self.open_subpage("plank")
+
     def game(self, game):
         dialog = GameStartDialog(game)
         result = dialog.exec()  # Shows the dialog and waits for user response
@@ -128,9 +135,12 @@ class TeachingGamesApp(QWidget):
             if game == "pirate":
                 print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
                 play_pirate_game(selected_grade, selected_lesson)
-            else:
+            elif game == "kitten":
                 print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
                 play_kitten_game(selected_grade, selected_lesson)
+            elif game == "plank":
+                print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
+                play_plank_game(selected_grade, selected_lesson)
     
     def open_subpage(self, game):
         if game == "pirate":

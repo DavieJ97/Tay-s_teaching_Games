@@ -1,0 +1,614 @@
+{
+  "3":{
+    "10.2": [
+      {
+        "id": 1,
+        "type": "unscramble",
+        "question": "Unscramble the word: mpuj",
+        "answer": "jump"
+      },
+      {
+        "id": 2,
+        "type": "unscramble",
+        "question": "Unscramble the word: nur",
+        "answer": "run"
+      },
+      {
+        "id": 3,
+        "type": "unscramble",
+        "question": "Unscramble the word: etkas",
+        "answer": "skate"
+      },
+      {
+        "id": 4,
+        "type": "unscramble",
+        "question": "Unscramble the word: gnis",
+        "answer": "sing"
+      },
+      {
+        "id": 5,
+        "type": "unscramble",
+        "question": "Unscramble the word: nedac",
+        "answer": "dance"
+      },
+      {
+        "id": 6,
+        "type": "unscramble",
+        "question": "Unscramble the word: kis",
+        "answer": "ski"
+      },
+      {
+        "id": 7,
+        "type": "unscramble",
+        "question": "Unscramble the word: ylf",
+        "answer": "fly"
+      },
+      {
+        "id": 8,
+        "type": "unscramble",
+        "question": "Unscramble the word: tmlaeh",
+        "answer": "helmet"
+      },
+      {
+        "id": 9,
+        "type": "fill_blank",
+        "question": "__ you jump?",
+        "answer": "Can"
+      },
+      {
+        "id": 10,
+        "type": "fill_blank",
+        "question": "___, I can.",
+        "answer": "Yes"
+      },
+      {
+        "id": 11,
+        "type": "fill_blank",
+        "question": "No, I __.",
+        "answer": "can't"
+      },
+      {
+        "id": 12,
+        "type": "fill_blank",
+        "question": "I __ run.",
+        "answer": "can"
+      },
+      {
+        "id": 13,
+        "type": "fill_blank",
+        "question": "I __ fly.",
+        "answer": "can't"
+      },
+      {
+        "id": 14,
+        "type": "fill_blank",
+        "question": "___ ___ sing?",
+        "answer": "Can you"
+      },
+      {
+        "id": 15,
+        "type": "fill_blank",
+        "question": "Can you __ fast?",
+        "answer": "run"
+      },
+      {
+        "id": 16,
+        "type": "translation",
+        "question": "너는 뛸 수 있니?",
+        "answer": "Can you run?"
+      },
+      {
+        "id": 17,
+        "type": "translation",
+        "question": "너는 노래할 수 있니?",
+        "answer": "Can you sing?"
+      },
+      {
+        "id": 18,
+        "type": "translation",
+        "question": "너는 춤출 수 있니?",
+        "answer": "Can you dance?"
+      },
+      {
+        "id": 19,
+        "type": "translation",
+        "question": "너는 스케이트 탈 수 있니?",
+        "answer": "Can you skate?"
+      },
+      {
+        "id": 20,
+        "type": "translation",
+        "question": "나는 노래할 수 있어.",
+        "answer": "I can sing."
+      },
+      {
+        "id": 21,
+        "type": "translation",
+        "question": "나는 달릴 수 없어.",
+        "answer": "I can't run."
+      },
+      {
+        "id": 22,
+        "type": "translation",
+        "question": "나는 날 수 없어.",
+        "answer": "I can't fly."
+      },
+      {
+        "id": 23,
+        "type": "translation",
+        "question": "나는 스케이트 탈 수 있어.",
+        "answer": "I can skate."
+      },
+      {
+        "id": 24,
+        "type": "choose",
+        "question": "Can you ski?",
+        "answer": "Well done!!"
+      },
+      {
+        "id": 25,
+        "type": "choose",
+        "question": "Can you fly?",
+        "answer": "Well done!!"
+      },
+      {
+        "id": 26,
+        "type": "choose",
+        "question": "Choose the correct word: I ___ dance. (A) can (B) helmet",
+        "answer": "can"
+      },
+      {
+        "id": 27,
+        "type": "choose",
+        "question": "Choose the correct word: Do you have a ___?. (A) helmet (B) jump",
+        "answer": "helmet"
+      },
+      {
+        "id": 28,
+        "type": "sentence_building",
+        "question": "Make a sentence: you / can / sing / ?",
+        "answer": "Can you sing?"
+      },
+      {
+        "id": 29,
+        "type": "sentence_building",
+        "question": "Make a sentence: I / can / jump.",
+        "answer": "I can jump."
+      },
+      {
+        "id": 30,
+        "type": "sentence_building",
+        "question": "Make a sentence: I / can't / ski.",
+        "answer": "I can't ski."
+      }
+    ]
+  },
+  "5":{
+    "10.2": [
+      {
+        "id": 1,
+        "type": "unscramble",
+        "question": "Unscramble the word: htab",
+        "answer": "bath",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 2,
+        "type": "unscramble",
+        "question": "Unscramble the word: moor gnivil",
+        "answer": "living room",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 3,
+        "type": "unscramble",
+        "question": "Unscramble the word: moodebr",
+        "answer": "bedroom",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 4,
+        "type": "unscramble",
+        "question": "Unscramble the word: saof",
+        "answer": "sofa",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 5,
+        "type": "unscramble",
+        "question": "Unscramble the word: toltei",
+        "answer": "toilet",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 6,
+        "type": "unscramble",
+        "question": "Unscramble the word: ksni",
+        "answer": "sink",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 7,
+        "type": "fill_blank",
+        "question": "_____ __ a sofa __ the living room.",
+        "answer": "There is ... in ...",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 8,
+        "type": "fill_blank",
+        "question": "_____ __ desks, too.",
+        "answer": "There are",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 9,
+        "type": "fill_blank",
+        "question": "_____ _ nice house!",
+        "answer": "What a",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 10,
+        "type": "fill_blank",
+        "question": "_____ __ a sink __ the bathroom.",
+        "answer": "There is ... in ...",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 11,
+        "type": "fill_blank",
+        "question": "_____ __ a stove __ the kitchen.",
+        "answer": "There is ... in ...",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 12,
+        "type": "translation",
+        "question": "거실에 소파가 있어요.",
+        "answer": "There is a sofa in the living room.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 13,
+        "type": "translation",
+        "question": "욕실에 세면대가 있어요.",
+        "answer": "There is a sink in the bathroom.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 14,
+        "type": "translation",
+        "question": "침실에 침대가 있어요.",
+        "answer": "There is a bed in the bedroom.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 15,
+        "type": "translation",
+        "question": "부엌에 가스레인지가 있어요.",
+        "answer": "There is a stove in the kitchen.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 16,
+        "type": "translation",
+        "question": "이 얼마나 멋진 집인가요!",
+        "answer": "What a nice house!",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 17,
+        "type": "translation",
+        "question": "화장실에 변기가 있어요.",
+        "answer": "There is a toilet in the bathroom.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 18,
+        "type": "translation",
+        "question": "도서관에 책이 많아요.",
+        "answer": "There are many books in the library.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 19,
+        "type": "translation",
+        "question": "교실에 칠판이 있어요.",
+        "answer": "There is a board in the classroom.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 20,
+        "type": "translation",
+        "question": "사물함에 내 가방이 있어요.",
+        "answer": "There is my bag in the locker.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 21,
+        "type": "translation",
+        "question": "나는 인형을 모아요.",
+        "answer": "I collect dolls.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 22,
+        "type": "translation",
+        "question": "이건 내 꿈의 집이에요.",
+        "answer": "This is my dream house.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 23,
+        "type": "translation",
+        "question": "너에게 내 방을 보여줄게요.",
+        "answer": "I will show you my room.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 24,
+        "type": "translation",
+        "question": "이것은 좋은 장소예요.",
+        "answer": "This is a nice place.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 25,
+        "type": "translation",
+        "question": "집에는 많은 물건들이 있어요.",
+        "answer": "There are many things in the house.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 26,
+        "type": "translation",
+        "question": "거실에 텔레비전도 있어요.",
+        "answer": "There is a television in the living room, too.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 27,
+        "type": "fill_blank",
+        "question": "_____ __ a board __ the classroom.",
+        "answer": "There is",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 28,
+        "type": "sentence_building",
+        "question": "Make a sentence: a / is / There / in / sink / bathroom / the",
+        "answer": "There is a sink in the bathroom.",
+        "hint_korean": "단어를 순서대로 배열하여 문장을 만드세요."
+      },
+      {
+        "id": 29,
+        "type": "sentence_building",
+        "question": "Make a sentence: nice / What / a / house / !",
+        "answer": "What a nice house!",
+        "hint_korean": "단어를 순서대로 배열하여 문장을 만드세요."
+      },
+      {
+        "id": 30,
+        "type": "sentence_building",
+        "question": "Make a sentence: desks / There / are / too / .",
+        "answer": "There are desks, too.",
+        "hint_korean": "단어를 순서대로 배열하여 문장을 만드세요."
+      }
+    ]
+  },
+  "6":{
+    "10.2": [
+      {
+        "id": 1,
+        "type": "unscramble",
+        "question": "Unscramble the word: kcolc",
+        "answer": "clock",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 2,
+        "type": "unscramble",
+        "question": "Unscramble the word: litubd",
+        "answer": "build",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 3,
+        "type": "unscramble",
+        "question": "Unscramble the word: neatvin",
+        "answer": "invent",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 4,
+        "type": "unscramble",
+        "question": "Unscramble the word: gikn",
+        "answer": "king",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 5,
+        "type": "unscramble",
+        "question": "Unscramble the word: ladiuns",
+        "answer": "sundial",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 6,
+        "type": "unscramble",
+        "question": "Unscramble the word: wotrer",
+        "answer": "tower",
+        "hint_korean": "단어의 철자를 올바른 순서로 맞추세요."
+      },
+      {
+        "id": 7,
+        "type": "fill_blank",
+        "question": "_____ wrote the story?",
+        "answer": "Who",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 8,
+        "type": "fill_blank",
+        "question": "Shakespeare ____.",
+        "answer": "did",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 9,
+        "type": "fill_blank",
+        "question": "_____ you say Shakespeare?",
+        "answer": "Did",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 10,
+        "type": "fill_blank",
+        "question": "The king _____ a big tower.",
+        "answer": "built",
+        "hint_korean": "문장을 완성하세요. (과거형을 사용하세요)"
+      },
+      {
+        "id": 11,
+        "type": "fill_blank",
+        "question": "He _____ a new clock for the tower.",
+        "answer": "invented",
+        "hint_korean": "문장을 완성하세요. (과거형을 사용하세요)"
+      },
+      {
+        "id": 12,
+        "type": "fill_blank",
+        "question": "The sundial _____ very old.",
+        "answer": "was",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 13,
+        "type": "fill_blank",
+        "question": "It _____ sunny yesterday.",
+        "answer": "was",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 14,
+        "type": "past_tense",
+        "question": "Write the past tense of 'build'.",
+        "answer": "built",
+        "hint_korean": "이 동사의 과거형을 쓰세요."
+      },
+      {
+        "id": 15,
+        "type": "past_tense",
+        "question": "Write the past tense of 'invent'.",
+        "answer": "invented",
+        "hint_korean": "이 동사의 과거형을 쓰세요."
+      },
+      {
+        "id": 16,
+        "type": "past_tense",
+        "question": "Write the past tense of 'write'.",
+        "answer": "wrote",
+        "hint_korean": "이 동사의 과거형을 쓰세요."
+      },
+      {
+        "id": 17,
+        "type": "translation",
+        "question": "누가 그 이야기를 썼어요?",
+        "answer": "Who wrote the story?",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 18,
+        "type": "translation",
+        "question": "셰익스피어가 썼어요.",
+        "answer": "Shakespeare did.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 19,
+        "type": "translation",
+        "question": "당신은 셰익스피어라고 말했나요?",
+        "answer": "Did you say Shakespeare?",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 20,
+        "type": "translation",
+        "question": "그 왕은 큰 탑을 지었어요.",
+        "answer": "The king built a big tower.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 21,
+        "type": "translation",
+        "question": "그는 시계를 발명했어요.",
+        "answer": "He invented a clock.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 22,
+        "type": "translation",
+        "question": "그 탑은 오래되었어요.",
+        "answer": "The tower was old.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 23,
+        "type": "translation",
+        "question": "그 남자는 못생겼어요.",
+        "answer": "The man was ugly.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 24,
+        "type": "translation",
+        "question": "그는 어렸을 때 시계를 만들었어요.",
+        "answer": "He made a clock when he was young.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 25,
+        "type": "translation",
+        "question": "그들은 세계를 여행했어요.",
+        "answer": "They traveled the world.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 26,
+        "type": "translation",
+        "question": "그는 젊은 왕이었어요.",
+        "answer": "He was a young king.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 27,
+        "type": "translation",
+        "question": "그녀는 새로운 시계를 만들었어요.",
+        "answer": "She made a new clock.",
+        "hint_korean": "이 문장을 영어로 말하세요."
+      },
+      {
+        "id": 28,
+        "type": "fill_blank",
+        "question": "_____ you write the story?",
+        "answer": "Did",
+        "hint_korean": "문장을 완성하세요."
+      },
+      {
+        "id": 29,
+        "type": "sentence_building",
+        "question": "Make a sentence: wrote / Who / book / the / ?",
+        "answer": "Who wrote the book?",
+        "hint_korean": "단어를 순서대로 배열하여 문장을 만드세요."
+      },
+      {
+        "id": 30,
+        "type": "sentence_building",
+        "question": "Make a sentence: did / Shakespeare / .",
+        "answer": "Shakespeare did.",
+        "hint_korean": "단어를 순서대로 배열하여 문장을 만드세요."
+      }
+    ]
+  }
+}
