@@ -8,6 +8,17 @@ from Pirates_of_the_classroom.game import play_pirate_game
 from Exploding_kittens.game import play_kitten_game
 from walk_the_plank.wanktheplank import play_plank_game
 from objects import Button, ToggleSwitch, ScrollArea, Label
+import os, sys
+import traceback
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class TeachingGamesApp(QWidget):
     def __init__(self):
@@ -23,7 +34,7 @@ class TeachingGamesApp(QWidget):
                 ]
         self.setWindowTitle("Tay's Teaching Games")
         self.setFixedSize(1375, 700)  # Set initial window size
-        self.setWindowIcon(QIcon("images/Intro_page_imgs/TTG _icon2.png"))
+        self.setWindowIcon(QIcon(resource_path("images/Intro_page_imgs/TTG _icon2.png")))
 
 
          # Main layout (Inside Scroll Area)
@@ -32,7 +43,7 @@ class TeachingGamesApp(QWidget):
 
         # Load and Set Fixed Image
         self.image_label = QLabel(self)
-        self.pixmap = QPixmap("images/Intro_page_imgs/Tays_Teaching_Games_Intro2.png")
+        self.pixmap = QPixmap(resource_path("images/Intro_page_imgs/Tays_Teaching_Games_Intro2.png"))
 
         if not self.pixmap.isNull():
             self.pixmap = self.pixmap.scaled(1200, 300, Qt.AspectRatioMode.KeepAspectRatio, Qt.TransformationMode.SmoothTransformation)  # Fixed size
@@ -47,12 +58,12 @@ class TeachingGamesApp(QWidget):
         self.buttons = []
         
         image_paths = [
-            "images/Intro_page_imgs/TTG_Pirates_of_the_classroom.png",
-            "images/Intro_page_imgs/TTG_Exploding_kittens.png",
-            "images\Intro_page_imgs\TTG_Walk_the+plank.png",
-            "images/Intro_page_imgs/TTG_spots_and_spiderwebs.png",
-            "images/Intro_page_imgs/TTG_Teachers_Page.png",
-            "images/Intro_page_imgs/TTG_About.png",
+            resource_path("images/Intro_page_imgs/TTG_Pirates_of_the_classroom.png"),
+            resource_path("images/Intro_page_imgs/TTG_Exploding_kittens.png"),
+            resource_path("images/Intro_page_imgs/TTG_Walk_the+plank.png"),
+            resource_path("images/Intro_page_imgs/TTG_spots_and_spiderwebs.png"),
+            resource_path("images/Intro_page_imgs/TTG_Teachers_Page.png"),
+            resource_path("images/Intro_page_imgs/TTG_About.png"),
         ]
 
         for i, img_path in enumerate(image_paths):
@@ -135,12 +146,17 @@ class TeachingGamesApp(QWidget):
             if game == "pirate":
                 print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
                 play_pirate_game(selected_grade, selected_lesson)
-            elif game == "kitten":
+            elif game == "kittens":
                 print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
                 play_kitten_game(selected_grade, selected_lesson)
             elif game == "plank":
                 print(f"Starting game with: Grade {selected_grade}, Lesson {selected_lesson}")
-                play_plank_game(selected_grade, selected_lesson)
+                try: 
+                    play_plank_game(selected_grade, selected_lesson)
+                except Exception:
+                    with open("error_log.txt", "a") as f:
+                        f.write("Mixer init failed:\n")
+                        f.write(traceback.format_exc())
     
     def open_subpage(self, game):
         if game == "pirate":

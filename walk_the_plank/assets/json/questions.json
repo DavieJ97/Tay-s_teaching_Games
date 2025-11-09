@@ -154,13 +154,13 @@
       {
         "id": 26,
         "type": "choose",
-        "question": "Choose the correct word: I ___ dance. (A) can (B) helmet",
+        "question": " I ___ dance. (A) can (B) helmet",
         "answer": "can"
       },
       {
         "id": 27,
         "type": "choose",
-        "question": "Choose the correct word: Do you have a ___?. (A) helmet (B) jump",
+        "question": "Do you have a ___?. (A) helmet (B) jump",
         "answer": "helmet"
       },
       {

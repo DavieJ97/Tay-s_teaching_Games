@@ -1,5 +1,5 @@
 import pygame
-import sys
+import sys, os
 import random
 from pathlib import Path
 import math
@@ -10,6 +10,15 @@ import json
 FPS = 60
 PLANK_SPACES = 30
 BARREL_TO_BREAK = 10
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 # ---------- GAME OBJECTS ----------
 class MovingSpriteWave:
@@ -431,7 +440,7 @@ class TreasureChestInteraction:
         self.bg_music = bg_music 
 
         # Load questions once
-        with open("walk_the_plank/assets/json/questions.json", "r", encoding="utf-8") as f:
+        with open(resource_path("walk_the_plank/assets/json/questions.json"), "r", encoding="utf-8") as f:
             data = json.load(f)
             self.questions = data[f"{grade}"][f"{lesson}"]
 
@@ -463,7 +472,7 @@ class TreasureChestInteraction:
         self.answer_text = "4"
 
         # Font
-        self.font = pygame.font.Font("walk_the_plank/assets/fonts/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf", 60)  # Default font, size 60
+        self.font = pygame.font.Font(resource_path("walk_the_plank/assets/fonts/Noto_Sans_KR/NotoSansKR-VariableFont_wght.ttf"), 60)  # Default font, size 60
 
         # Blur overlay (semi-transparent dark layer)
         self.overlay = pygame.Surface((self.screen_w, self.screen_h), pygame.SRCALPHA)

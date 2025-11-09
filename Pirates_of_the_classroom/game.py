@@ -3,8 +3,16 @@ import random
 import json
 from Pirates_of_the_classroom.objectPirates import Image, Sound, Box, Text
 import traceback
-import sys
-import os
+import os, sys
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 
 class Game:
@@ -17,7 +25,7 @@ class Game:
         self.width, self.height = info.current_w, info.current_h  # Get screen resolution
         print(f"width{self.width}, height{self.height}")
         self.rgb = (255, 255, 255)
-        self.font_url = "Pirates_of_the_classroom/assets/font/FantaisieArtistique.ttf"
+        self.font_url = resource_path("Pirates_of_the_classroom/assets/font/FantaisieArtistique.ttf")
         self.game_window = pygame.display.set_mode((self.width, self.height), pygame.NOFRAME)
         self.clock = pygame.time.Clock()
         self.font_size = font_size
@@ -35,21 +43,21 @@ class Game:
         self.FIGHT_EVENT = pygame.USEREVENT + 3
         self.MINUS_EVENT = pygame.USEREVENT + 4
         self.RESET_EVENT = pygame.USEREVENT + 5
-        pygame.mixer.music.load("Pirates_of_the_classroom/assets/audio/Pirates of The Caribbean- EPIC Music [ ezmp3.cc ].mp3")
+        pygame.mixer.music.load(resource_path("Pirates_of_the_classroom/assets/audio/Pirates of The Caribbean- EPIC Music [ ezmp3.cc ].mp3"))
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(-1)
-        with open("Pirates_of_the_classroom/assets/json/words.json", "r", encoding="utf-8") as file:
+        with open(resource_path("Pirates_of_the_classroom/assets/json/words.json"), "r", encoding="utf-8") as file:
             self.data = json.load(file)
         self.create_intro_objects()
         
 
 # Intro Page Functions
     def create_intro_objects(self):
-        self.intro_background_img = Image(self.game_window, 0, 0, "Pirates_of_the_classroom/assets/images/into_background.png", self.width, self.height)
-        self.exit_button = Image(self.game_window, self.width-70, self.height-70, "Pirates_of_the_classroom/assets/images/exit_button.png", 50, 50)
-        self.intro_text = Image(self.game_window, 10, self.height*.2, "Pirates_of_the_classroom/assets/images/intro_text.png", self.width - 20, 188)
+        self.intro_background_img = Image(self.game_window, 0, 0, resource_path("Pirates_of_the_classroom/assets/images/into_background.png"), self.width, self.height)
+        self.exit_button = Image(self.game_window, self.width-70, self.height-70, resource_path("Pirates_of_the_classroom/assets/images/exit_button.png"), 50, 50)
+        self.intro_text = Image(self.game_window, 10, self.height*.2, resource_path("Pirates_of_the_classroom/assets/images/intro_text.png"), self.width - 20, 188)
         self.choose_teams_text = Text(self.game_window, self.width*.5-120, self.height*.5, f"How many teams?: {self.numOfTeams}", self.font_url , 40, self.text_color)
-        self.click = Sound("Pirates_of_the_classroom/assets/audio/button-202966.mp3")
+        self.click = Sound(resource_path("Pirates_of_the_classroom/assets/audio/button-202966.mp3"))
 
     def render_teams_text(self):
         self.choose_teams_text.innit_text(f"How many teams?: {self.numOfTeams}")
@@ -62,7 +70,7 @@ class Game:
 
 # Main Page Functions
     def create_main_objects(self):
-        self.main_background_img = Image(self.game_window, 0, 0, "Pirates_of_the_classroom/assets/images/background.png", self.width, self.height)
+        self.main_background_img = Image(self.game_window, 0, 0, resource_path("Pirates_of_the_classroom/assets/images/background.png"), self.width, self.height)
         self.topMaps = [(self.width * .183, 10), (self.width *.29, 10), (self.width *.4, 10), (self.width * .51, 10), (self.width *.62, 10), (self.width *.73, 10)]
         self.planks = [(10, self.height *.17), (10, self.height *.325), (10, self.height *.48), (10, self.height *.64), (10, self.height *.79)]
         self.x_imgs = []
@@ -72,21 +80,21 @@ class Game:
             if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
                 full_path = self.resource_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii])
                 mini_dic = {}
-                mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156)
+                mini_dic["background"] = Image(self.game_window, x, y, resource_path("Pirates_of_the_classroom/assets/images/blank_map.png"), self.width *.11, self.height *.156)
                 mini_dic["forground"] = Image(self.game_window, x, y, self.data[f"{self.grade}"][f"{self.lesson}"][ii], (self.width *.11)-10, (self.height *.156)-10)
                 self.word_img.append(mini_dic)
             else:
-                self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/blank_map.png", self.width *.11, self.height *.156, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
+                self.word_img.append(Image(self.game_window, x, y, resource_path("Pirates_of_the_classroom/assets/images/blank_map.png"), self.width *.11, self.height *.156, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
             ii += 1
         for x, y in self.planks:
             if self.is_image_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii]):
                 full_path = self.resource_path(self.data[f"{self.grade}"][f"{self.lesson}"][ii])
                 mini_dic = {}
-                mini_dic["background"] = Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13)
+                mini_dic["background"] = Image(self.game_window, x, y, resource_path("Pirates_of_the_classroom/assets/images/plank.png"), self.width *.146, self.height *.13)
                 mini_dic["forground"] = Image(self.game_window, x, y, full_path, self.width *.146, self.height *.13)
                 self.word_img.append(mini_dic)
             else:
-                self.word_img.append(Image(self.game_window, x, y, "Pirates_of_the_classroom/assets/images/plank.png", self.width *.146, self.height *.13, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
+                self.word_img.append(Image(self.game_window, x, y, resource_path("Pirates_of_the_classroom/assets/images/plank.png"), self.width *.146, self.height *.13, text=self.data[f"{self.grade}"][f"{self.lesson}"][ii], fontUrl=self.font_url, text_size=self.font_size, text_color=self.text_color))
             ii += 1
         self.make_button()
         self.scoreboard = Box(self.game_window, self.width - (self.width *.13), 10, self.width *.117, self.height - (self.height *.104), self.box_color)
@@ -120,7 +128,7 @@ class Game:
             x_pos = start_x + col * spacing_x
             y_pos = start_y + row * spacing_y
             
-            self.x_imgs.append(Image(self.game_window, x_pos, y_pos, "Pirates_of_the_classroom/assets/images/x.png", img_width, img_height))   
+            self.x_imgs.append(Image(self.game_window, x_pos, y_pos, resource_path("Pirates_of_the_classroom/assets/images/x.png"), img_width, img_height))   
 
     def make_random_list(self):
         self.random_prize = []
@@ -166,17 +174,17 @@ class Game:
 
     # Rewards Page Functions
     def create_reward_objects(self):
-        self.treasure_shine = Image(self.game_window, self.width*.5, self.height*.5, "Pirates_of_the_classroom/assets/images/treasure_shine.png", 600, 600, True, "Pirates_of_the_classroom/assets/audio/winning-218995.mp3", 0.4)
-        self.treasure = Image(self.game_window, self.width*.5, self.height*.5, "Pirates_of_the_classroom/assets/images/treasure.png", 300, 300, True, "Pirates_of_the_classroom/assets/audio/pot-of-coins-275747.mp3")
-        self.fight_instructions = Image(self.game_window, 50, 10, "Pirates_of_the_classroom/assets/images/fight_instructions.png", self.width-100, self.height *.13)
-        self.fight_salavan = Image(self.game_window, self.width *.22, self.height *.26, "Pirates_of_the_classroom/assets/images/fight_salavan.png", self.width *.274, self.height *.445)
-        self.fight_jack = Image(self.game_window, self.width *.51, self.height *.26, "Pirates_of_the_classroom/assets/images/fight_jack.png", self.width *.274, self.height *.445)
-        self.fight_text = Image(self.game_window, self.width*.5, self.height *.78, "Pirates_of_the_classroom/assets/images/fight_text.png", self.width *.34, self.height *.22, True, "Pirates_of_the_classroom/assets/audio/draw-sword1-44724.mp3")
+        self.treasure_shine = Image(self.game_window, self.width*.5, self.height*.5, resource_path("Pirates_of_the_classroom/assets/images/treasure_shine.png"), 600, 600, True, "Pirates_of_the_classroom/assets/audio/winning-218995.mp3", 0.4)
+        self.treasure = Image(self.game_window, self.width*.5, self.height*.5, resource_path("Pirates_of_the_classroom/assets/images/treasure.png"), 300, 300, True, "Pirates_of_the_classroom/assets/audio/pot-of-coins-275747.mp3")
+        self.fight_instructions = Image(self.game_window, 50, 10, resource_path("Pirates_of_the_classroom/assets/images/fight_instructions.png"), self.width-100, self.height *.13)
+        self.fight_salavan = Image(self.game_window, self.width *.22, self.height *.26, resource_path("Pirates_of_the_classroom/assets/images/fight_salavan.png"), self.width *.274, self.height *.445)
+        self.fight_jack = Image(self.game_window, self.width *.51, self.height *.26, resource_path("Pirates_of_the_classroom/assets/images/fight_jack.png"), self.width *.274, self.height *.445)
+        self.fight_text = Image(self.game_window, self.width*.5, self.height *.78, resource_path("Pirates_of_the_classroom/assets/images/fight_text.png"), self.width *.34, self.height *.22, True, "Pirates_of_the_classroom/assets/audio/draw-sword1-44724.mp3")
         starting_y = self.height *.17
         for teams in range(0, self.numOfTeams):
             self.rps_boxs.append(Box(self.game_window, self.width-190, starting_y, 170, 80, self.box_color, f"Team {teams+1}", self.font_url, 40, self.text_color, True))
             starting_y +=100
-        self.reset_score_img = Image(self.game_window, 0, 0, "Pirates_of_the_classroom/assets/images/background_reset.png", self.width, self.height, False, "Pirates_of_the_classroom/assets/audio/evil-laugh-89423.mp3")
+        self.reset_score_img = Image(self.game_window, 0, 0, resource_path("Pirates_of_the_classroom/assets/images/background_reset.png"), self.width, self.height, False, "Pirates_of_the_classroom/assets/audio/evil-laugh-89423.mp3")
 
     def coin_event(self):
         self.coin_list = []
@@ -202,7 +210,7 @@ class Game:
         self.i = 0
         self.boat_x = self.width * .5
         self.boat_y = self.height * .5
-        cannon_sound = Sound("Pirates_of_the_classroom/assets/audio/cannon-fire-161072.mp3")
+        cannon_sound = Sound(resource_path("Pirates_of_the_classroom/assets/audio/cannon-fire-161072.mp3"))
         cannon_sound.play_sound()
         pygame.time.set_timer(self.MINUS_EVENT, 1000)
 
@@ -307,7 +315,7 @@ class Game:
             
             if event.type == self.COIN_EVENT:
                 if self.i < self.random_prize[1]:
-                    coin = Image(self.game_window, self.coin_x, self.coin_y, "Pirates_of_the_classroom/assets/images/coin.png", 200, 200, True, "Pirates_of_the_classroom/assets/audio/coin-recieved-230517.mp3")
+                    coin = Image(self.game_window, self.coin_x, self.coin_y, resource_path("Pirates_of_the_classroom/assets/images/coin.png"), 200, 200, True, resource_path("Pirates_of_the_classroom/assets/audio/coin-recieved-230517.mp3"))
                     coin.draw_image(with_audio=True)
                     self.coin_list.append(coin)
                     self.i +=1
@@ -331,7 +339,7 @@ class Game:
                 self.isFight = False
             elif event.type == self.MINUS_EVENT:
                 if self.i < abs(self.random_prize[1]):
-                    boat = Image(self.game_window, self.boat_x, self.boat_y, "Pirates_of_the_classroom/assets/images/minus_img.png", 280, 262, True, "Pirates_of_the_classroom/assets/audio/explosion-312361.mp3")
+                    boat = Image(self.game_window, self.boat_x, self.boat_y, resource_path("Pirates_of_the_classroom/assets/images/minus_img.png"), 280, 262, True, resource_path("Pirates_of_the_classroom/assets/audio/explosion-312361.mp3"))
                     boat.draw_image(with_audio=True)
                     self.minus_list.append(boat)
                     self.i +=1

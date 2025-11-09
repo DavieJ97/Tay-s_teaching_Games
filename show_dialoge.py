@@ -2,6 +2,17 @@ from PyQt6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QMessageBox
 import json
 from objects import Button, Label, ComboBox
 
+import os, sys
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 class GameStartDialog(QDialog):
     """ Pop-up that asks the user to select a grade and lesson before starting the game. """
@@ -9,11 +20,11 @@ class GameStartDialog(QDialog):
         super().__init__()
         print("Showing_dialog")
         if game == "pirate":
-            self.json_path = "Pirates_of_the_classroom/assets/json/words.json"
+            self.json_path = resource_path("Pirates_of_the_classroom/assets/json/words.json")
         elif game == "kittens":
-            self.json_path = "Exploding_kittens/assets/json/questions.json"
+            self.json_path = resource_path("Exploding_kittens/assets/json/questions.json")
         elif game == "plank":
-            self.json_path = "walk_the_plank/assets/json/questions.json"
+            self.json_path = resource_path("walk_the_plank/assets/json/questions.json")
         self.setWindowTitle("Select Grade & Lesson")
         self.setFixedSize(400, 300)
         # Set background color

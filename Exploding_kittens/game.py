@@ -3,8 +3,17 @@ import random
 import json
 from Exploding_kittens.objectKittens import Image, Box, Text, Sound
 import traceback
-import sys
-import os
+import os, sys
+
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and PyInstaller"""
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 
 class Game:
     def __init__(self, grade, lesson):
@@ -23,7 +32,7 @@ class Game:
         self.yellow = (255, 255, 0)
         self.grey = (211, 211, 211)
         self.page = "intro"
-        self.font_url = "Exploding_kittens/assets/font/Boldonse-Regular.ttf"
+        self.font_url = resource_path("Exploding_kittens/assets/font/Boldonse-Regular.ttf")
         self.abc_list = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X"]
         self.numOfTeams = 1
         self.turn = 0
@@ -33,11 +42,11 @@ class Game:
         print(f"{self.width}, {self.height}")
         self.font_size = self.width//20
         self.game_window = pygame.display.set_mode((self.width, self.height), pygame.NOFRAME)
-        pygame.mixer.music.load("Exploding_kittens/assets/audio/Battle Theme - Kitty Letter Music EXTENDED (Exploding Kittens Inc & The Oatmeal).mp3")
+        pygame.mixer.music.load(resource_path("Exploding_kittens/assets/audio/Battle Theme - Kitty Letter Music EXTENDED (Exploding Kittens Inc & The Oatmeal).mp3"))
         pygame.mixer.music.set_volume(0.5)
         pygame.mixer.music.play(-1)
         self.clock = pygame.time.Clock()
-        with open("Exploding_kittens/assets/json/questions.json", "r", encoding="utf-8") as file:
+        with open(resource_path("Exploding_kittens/assets/json/questions.json"), "r", encoding="utf-8") as file:
             data = json.load(file)
         self.data = data[self.grade][self.lesson]
         self.json_i = 0
@@ -82,15 +91,15 @@ class Game:
 
     # Intro Functions
     def create_intro_objects(self):
-        self.intro_background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/Intro_image.png", self.width, self.height)
-        self.exit_button = Image(self.game_window, self.width*0.007, self.height-(self.height*.104), "Exploding_kittens/assets/images/incorrect_button.png", self.width*.06, self.height*.09)
-        self.choose_teams_box = Image(self.game_window, self.width*0.073, self.height - (self.height*.13), "Exploding_kittens/assets/images/answer_bar.png", self.width - (self.width*.13),self.height*.13, text= f"How many teams will play?: {self.numOfTeams}", fontUrl=self.font_url, text_size= int(self.width*.029), text_color=self.white)
-        self.continue_button = Image(self.game_window, self.width - (self.width*.065), self.height -(self.height*.104), "Exploding_kittens/assets/images/correct_button.png", self.width*.06, self.height*.09)
-        self.click_sound  = Sound("Exploding_kittens/assets/audio/button-202966.mp3")
-        self.card_swip = Sound("Exploding_kittens/assets/audio/wind-swoosh-short-289744.mp3")
-        self.oh_no_sound = Sound("Exploding_kittens/assets/audio/Oh No (Instrumental) - Kreepa(cut edition).mp3")
-        self.dan_dan_dan_sound = Sound("Exploding_kittens/assets/audio/Dan Dan Dannnnnnnn!!! Sound Effect.mp3")
-        self.explotion_sound = Sound("Exploding_kittens/assets/audio/medium-explosion-cat.mp3")
+        self.intro_background = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/Intro_image.png"), self.width, self.height)
+        self.exit_button = Image(self.game_window, self.width*0.007, self.height-(self.height*.104), resource_path("Exploding_kittens/assets/images/incorrect_button.png"), self.width*.06, self.height*.09)
+        self.choose_teams_box = Image(self.game_window, self.width*0.073, self.height - (self.height*.13), resource_path("Exploding_kittens/assets/images/answer_bar.png"), self.width - (self.width*.13),self.height*.13, text= f"How many teams will play?: {self.numOfTeams}", fontUrl=self.font_url, text_size= int(self.width*.029), text_color=self.white)
+        self.continue_button = Image(self.game_window, self.width - (self.width*.065), self.height -(self.height*.104), resource_path("Exploding_kittens/assets/images/correct_button.png"), self.width*.06, self.height*.09)
+        self.click_sound  = Sound(resource_path("Exploding_kittens/assets/audio/button-202966.mp3"))
+        self.card_swip = Sound(resource_path("Exploding_kittens/assets/audio/wind-swoosh-short-289744.mp3"))
+        self.oh_no_sound = Sound(resource_path("Exploding_kittens/assets/audio/Oh No (Instrumental) - Kreepa(cut edition).mp3"))
+        self.dan_dan_dan_sound = Sound(resource_path("Exploding_kittens/assets/audio/Dan Dan Dannnnnnnn!!! Sound Effect.mp3"))
+        self.explotion_sound = Sound(resource_path("Exploding_kittens/assets/audio/medium-explosion-cat.mp3"))
 
     def draw_intro_objects(self):
         self.intro_background.draw_image()
@@ -115,11 +124,11 @@ class Game:
     # Main Functions
     def create_main_objects(self):
         if not self.demo:
-            self.background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/main_background.png", self.width, self.height)
-            self.tag = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/Choose_a_letter_tag.png", self.width, self.height*.13, text="Choose a letter", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black)
+            self.background = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/main_background.png"), self.width, self.height)
+            self.tag = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/Choose_a_letter_tag.png"), self.width, self.height*.13, text="Choose a letter", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black)
         else:
-            self.background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/main_background.png", self.width, self.height, text="EXAMPLE", fontUrl=self.font_url, text_size=int(self.width*.11), text_color=self.grey)
-            self.tag = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/Choose_a_letter_tag.png", self.width, self.height*.13, text="This is an example to show how the game works.", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black)
+            self.background = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/main_background.png"), self.width, self.height, text="EXAMPLE", fontUrl=self.font_url, text_size=int(self.width*.11), text_color=self.grey)
+            self.tag = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/Choose_a_letter_tag.png"), self.width, self.height*.13, text="This is an example to show how the game works.", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black)
         self.make_letter_boxes()
         self.make_score_planks()
         
@@ -139,11 +148,11 @@ class Game:
         list = self.demo_letter_list if self.demo else self.abc_list
         for i, letter in enumerate(list):
             if i == 5 or i == 11 or i == 17:
-                self.letter_box_list.append(Image(self.game_window, position_x, position_y, "Exploding_kittens/assets/images/letter_block.png", self.width*.102, self.height*.182, text=letter, fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
+                self.letter_box_list.append(Image(self.game_window, position_x, position_y, resource_path("Exploding_kittens/assets/images/letter_block.png"), self.width*.102, self.height*.182, text=letter, fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
                 position_x = self.width*.043
                 position_y += spaceing_y
             else:
-                self.letter_box_list.append(Image(self.game_window, position_x, position_y, "Exploding_kittens/assets/images/letter_block.png", self.width*.102, self.height*.182, text=letter, fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
+                self.letter_box_list.append(Image(self.game_window, position_x, position_y, resource_path("Exploding_kittens/assets/images/letter_block.png"), self.width*.102, self.height*.182, text=letter, fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
                 position_x += spaceing_x
         
     def make_score_planks(self):
@@ -153,9 +162,9 @@ class Game:
         teams = self.demo_teams if self.demo else self.numOfTeams
         for i in range(0, teams):
             if i == 0:
-                self.team_box_list.append(Image(self.game_window, x, y, "Exploding_kittens/assets/images/Score_plank.png", self.width*.26, self.height*.13, text=f"Team {i+1}: {self.teamScores[i]}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
+                self.team_box_list.append(Image(self.game_window, x, y, resource_path("Exploding_kittens/assets/images/Score_plank.png"), self.width*.26, self.height*.13, text=f"Team {i+1}: {self.teamScores[i]}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white))
             else:
-                self.team_box_list.append(Image(self.game_window, x, y, "Exploding_kittens/assets/images/Score_plank.png", self.width*.26, self.height*.13, text=f"Team {i+1}: {self.teamScores[i]}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black))
+                self.team_box_list.append(Image(self.game_window, x, y, resource_path("Exploding_kittens/assets/images/Score_plank.png"), self.width*.26, self.height*.13, text=f"Team {i+1}: {self.teamScores[i]}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.black))
             y += spacing_y
     
     def update_scorebord(self):
@@ -175,19 +184,19 @@ class Game:
     # Question Functions
     def create_question_objects(self):
         self.make_question()
-        self.question_background = Image(self.game_window, 0, 0, "Exploding_kittens/assets/images/question_background.png", self.width, self.height)
+        self.question_background = Image(self.game_window, 0, 0, resource_path("Exploding_kittens/assets/images/question_background.png"), self.width, self.height)
         if self.is_image_path(self.question):
-            path = self.resource_path(self.question)
-            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False)
+            path = resource_path(self.question)
+            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, resource_path("Exploding_kittens/assets/images/question_box.png"), self.width-(self.width*.146), self.height-(self.height*.13), False)
             self.over_image = Image(self.game_window, self.width*.5, self.height*.5, path, (self.width-(self.width*.146))-100, (self.height-(self.height*.13))-100, True)
         else:
-            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, "Exploding_kittens/assets/images/question_box.png", self.width-(self.width*.146), self.height-(self.height*.13), False, text=f"{self.question}", fontUrl=self.font_url, text_size=int(self.width*.0366), text_color=self.grey)
-        self.top_instructions = Image(self.game_window, self.width*.037, self.height*.052, "Exploding_kittens/assets/images/Top_instructions.png", self.width-(self.width*.073), self.height*.13, False, text=f"{self.instruction}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
-        self.answer_bar = Image(self.game_window, self.width*.11, self.height-(self.height*.13), "Exploding_kittens/assets/images/answer_bar.png", self.width-(self.width*.22), self.height*.13, False, text=f"{self.answer}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
-        self.incorrect_button = Image(self.game_window, self.width*.0073, self.height-(self.height*.104), "Exploding_kittens/assets/images/incorrect_button.png", self.width*.061, self.height*.091)
-        self.correct_button = Image(self.game_window, self.width - (self.width*.066), self.height-(self.height*.104), "Exploding_kittens/assets/images/correct_button.png", self.width*.061, self.height*.091)
-        self.correct_sound = Sound("Exploding_kittens/assets/audio/correct-6033.mp3")
-        self.tada_sound = Sound("Exploding_kittens/assets/audio/tada-military-3-183975.mp3")
+            self.question_box = Image(self.game_window, self.width*.073, self.height*.09, resource_path("Exploding_kittens/assets/images/question_box.png"), self.width-(self.width*.146), self.height-(self.height*.13), False, text=f"{self.question}", fontUrl=self.font_url, text_size=int(self.width*.0366), text_color=self.grey)
+        self.top_instructions = Image(self.game_window, self.width*.037, self.height*.052, resource_path("Exploding_kittens/assets/images/Top_instructions.png"), self.width-(self.width*.073), self.height*.13, False, text=f"{self.instruction}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
+        self.answer_bar = Image(self.game_window, self.width*.11, self.height-(self.height*.13), resource_path("Exploding_kittens/assets/images/answer_bar.png"), self.width-(self.width*.22), self.height*.13, False, text=f"{self.answer}", fontUrl=self.font_url, text_size=int(self.width*.029), text_color=self.white)
+        self.incorrect_button = Image(self.game_window, self.width*.0073, self.height-(self.height*.104), resource_path("Exploding_kittens/assets/images/incorrect_button.png"), self.width*.061, self.height*.091)
+        self.correct_button = Image(self.game_window, self.width - (self.width*.066), self.height-(self.height*.104), resource_path("Exploding_kittens/assets/images/correct_button.png"), self.width*.061, self.height*.091)
+        self.correct_sound = Sound(resource_path("Exploding_kittens/assets/audio/correct-6033.mp3"))
+        self.tada_sound = Sound(resource_path("Exploding_kittens/assets/audio/tada-military-3-183975.mp3"))
 
     def draw_question_objects(self):
         self.question_background.draw_image()
@@ -208,7 +217,7 @@ class Game:
 
     # Reward Functions
     def create_reward_objects(self):
-        self.back_button = Image(self.game_window, self.width - (self.width*.066), self.height - (self.height*.104), "Exploding_kittens/assets/images/back_button.png", self.width*.061, self.height*.0911)
+        self.back_button = Image(self.game_window, self.width - (self.width*.066), self.height - (self.height*.104), resource_path("Exploding_kittens/assets/images/back_button.png"), self.width*.061, self.height*.0911)
         random_chance_list = self.random_chance_list if not self.demo else self.demo_random_chance_list
         if random_chance_list[0] != 5:
             self.make_cards_list_objects()
@@ -225,36 +234,36 @@ class Game:
         self.random_num = random.randint(1,2) if not self.demo else self.demo_random_num
         self.card_list = []
         if self.random_num == 1:
-            self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/special_cards/change.png", self.width*.226, self.height*.546, True))
+            self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/special_cards/change.png"), self.width*.226, self.height*.546, True))
         elif self.random_num == 2:
-            self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/special_cards/Lose_all.png", self.width*.226, self.height*.546, True))
-        self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/back_of_card.png", self.width*.226, self.height*.546, True))
+            self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/special_cards/Lose_all.png"), self.width*.226, self.height*.546, True))
+        self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/back_of_card.png"), self.width*.226, self.height*.546, True))
 
     def make_cards_list_objects(self):
         self.card_list = []
         random_card_list = self.random_card_list if not self.demo else self.demo_random_card_list
         for num in random_card_list:
             if num == 1:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/+1.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/+1.png"), self.width*.226, self.height*.546, True))
             elif num == 2:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/+2.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/+2.png"), self.width*.226, self.height*.546, True))
             elif num == 3:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/+3.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/+3.png"), self.width*.226, self.height*.546, True))
             elif num == 4:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/+4.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/+4.png"), self.width*.226, self.height*.546, True))
             elif num == 5:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/+5.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/+5.png"), self.width*.226, self.height*.546, True))
             elif num == 0:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/bomb.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/bomb.png"), self.width*.226, self.height*.546, True))
             elif num == 6:
-                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/normal_cards/nuclear.png", self.width*.226, self.height*.546, True))
+                self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/normal_cards/nuclear.png"), self.width*.226, self.height*.546, True))
         self.card_list.reverse()
         reversed_list = random_card_list[::-1]
         if self.demo:
             self.demo_random_card_list = reversed_list
         else:
             self.random_card_list = reversed_list
-        self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, "Exploding_kittens/assets/images/cards/back_of_card.png", self.width*.226, self.height*.546, True))
+        self.card_list.append(Image(self.game_window, self.width*.25, self.height*.5, resource_path("Exploding_kittens/assets/images/cards/back_of_card.png"), self.width*.226, self.height*.546, True))
 
     def draw_reward_objects(self):
         self.question_background.draw_image()
@@ -522,16 +531,6 @@ class Game:
                     elif P5_text_rect.collidepoint(event.pos):
                         self.click_sound.play_sound()
                         self.moving = True
-
-    def resource_path(self, relative_path):
-        """Get absolute path to resource, works for dev and for PyInstaller."""
-        try:
-            base_path = os.path.dirname(sys.executable)  # PyInstaller builds
-        except AttributeError:
-            base_path = os.path.dirname(sys.argv[0])  # Folder containing the main script or executable
-            print("Root path:", os.path.dirname(sys.argv[0]))
-
-        return os.path.join(base_path, relative_path)
 
     def main_loop(self):
         while self.isRunning:
