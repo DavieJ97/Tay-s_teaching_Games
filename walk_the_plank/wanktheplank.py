@@ -361,6 +361,7 @@ class GamePlay:
                         # pick option
                         option = self.pick_slider_option(self.arrow_pos)
                         self.perform_option(option)
+                        self.turn = 1 if self.turn == 2 else 2
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         # allow keyboard control: start/stop arrow
@@ -372,6 +373,7 @@ class GamePlay:
                             self.sound_loaded['spinner_sound'].stop()
                             option = self.pick_slider_option(self.arrow_pos)
                             self.perform_option(option)
+                            self.turn = 1 if self.turn == 2 else 2
                     elif event.key == pygame.K_ESCAPE:
                         running = False
 
@@ -409,7 +411,7 @@ class GamePlay:
             # Check if movement finished
             if self.movement_in_progress and not (self.player1.moving or self.player2.moving):
                 self.movement_in_progress = False
-                self.turn = 1 if self.turn == 2 else 2
+                
 
             # --- CHECK IF PLAYER REACHED END OF PLANK ---
             for player, plank in [(self.player1, self.plank_top), (self.player2, self.plank_bottom)]:
@@ -429,8 +431,6 @@ class GamePlay:
                     player.moving = False
                     player.move_target = None
 
-                    # Optional: switch turn after reaching the end
-                    self.turn = 1 if plank.team == 2 else 2
 
             # update barrel drops
             for bd in self.barrel_drops:
